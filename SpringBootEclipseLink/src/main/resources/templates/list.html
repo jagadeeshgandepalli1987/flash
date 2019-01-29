@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1" align="center">
+		<thead>
+			<tr>
+				<th>Employee No</th>
+				<th>Employee Name</th>
+				<th>Employee Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee: ${list}">
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.name}"></td>
+				<td th:text="${employee.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>
