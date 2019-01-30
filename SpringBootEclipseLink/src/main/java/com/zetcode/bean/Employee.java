@@ -20,8 +20,8 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long empId;
+	private String address;
     private String name;
-    private String address;
     
     public Employee() {
 		System.out.println("Employee 0-param constructor");

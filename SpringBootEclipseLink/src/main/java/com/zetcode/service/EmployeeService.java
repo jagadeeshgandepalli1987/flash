@@ -8,6 +8,8 @@ import com.zetcode.bean.Employee;
 public interface EmployeeService {
 	
     public void saveEmployee(Employee employee);
+    
+    public Employee findEmployeeById(Long empId);
 
     public Employee findEmployeeByName(String name);
 
