@@ -19,8 +19,6 @@ import javax.persistence.Table;
 public class Car {
 
 	@Id
-	//@GeneratedValue(generator="cars_sequence")
-	//@SequenceGenerator(name="cars_sequence",sequenceName="car_s1", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long Id;
     private String name;

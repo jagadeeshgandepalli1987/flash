@@ -11,13 +11,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableTransactionManagement
 @Configuration
 public class AppConf {
-
+	
+	//EntityManager bean Configurations
     @Bean
-//    @Qualifier(value = "em")
     public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
     
+  //EntityManagerFactory bean Configurations, PersistenceUnit name "cars-pu"
     @Bean
     public EntityManagerFactory createEntityManagerFactory() {
         return Persistence.createEntityManagerFactory("cars-pu");
