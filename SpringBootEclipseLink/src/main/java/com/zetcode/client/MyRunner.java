@@ -1,11 +1,13 @@
 package com.zetcode.client;
 
-import com.zetcode.bean.Car;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
+
+import com.zetcode.bean.Car;
 import com.zetcode.service.CarsService;
 
 @Component
@@ -17,11 +19,11 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-//        Car car2 = new Car();
-//        car2.setName("Renault");
-//        car2.setPrice(18000);
-//        
-//        cdao.saveCar(car2);
+ 	    /* Car car2 = new Car();
+        car2.setName("Renault");
+        car2.setPrice(18000);
+        
+        crs.saveCar(car2);*/
 
         try {
             Car car = crs.findCarByName("Citroen");

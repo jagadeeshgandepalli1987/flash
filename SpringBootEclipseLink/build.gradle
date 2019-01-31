@@ -33,11 +33,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile group: 'org.eclipse.persistence', name: 'eclipselink', version:'2.6.4'
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'1.4.3.RELEASE') {
-exclude(module: 'hibernate-entitymanager')
+	exclude(module: 'hibernate-entitymanager')
     }
     compile group: 'org.hibernate', name: 'hibernate-validator', version:'5.2.4.Final'
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version:'1.4.3.RELEASE') {
-exclude(module: 'commons-logging')
-    }
+    /*compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version:'1.4.3.RELEASE') {
+	exclude(module: 'commons-logging')
+    }*/
     compileOnly group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa.modelgen.processor', version:'2.5.2'
 }

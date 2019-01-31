@@ -17,7 +17,7 @@ public class EmployeeController {
 	private EmployeeService service;
 	
 	//--------------------------------Home page----------------------------------------------
-		@RequestMapping(value = "/home")
+		@RequestMapping(value = "/home",method=RequestMethod.GET)
 		public String home() {
 			
 			return "home";
@@ -35,6 +35,7 @@ public class EmployeeController {
 		@RequestMapping(value = "/register", method=RequestMethod.POST)
 	    //@PostMapping("/register")
 	    public String greetingSubmit(@ModelAttribute Employee employee) {
+			service.saveEmployee(employee);
 	    	System.out.println(employee.getEmpId()+" "+employee.getName()+" "+employee.getAddress());
 	        return "success";
 	    }

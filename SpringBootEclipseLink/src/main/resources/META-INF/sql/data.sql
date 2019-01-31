@@ -13,4 +13,3 @@ INSERT INTO Cars(Id,Name, Price) VALUES(6,'Citroen', 21000)
 INSERT INTO Cars(Id,Name, Price) VALUES(7,'Hummer', 41400)
 
 INSERT INTO Cars(Id,Name, Price) VALUES(8,'Volkswagen', 21600)
-INSERT INTO Employee(empId,name,address) VALUES(1,'Volkswagen', 'vizag')

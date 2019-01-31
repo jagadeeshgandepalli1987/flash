@@ -1,35 +1,41 @@
+
 package com.zetcode.service;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import com.zetcode.bean.Employee;
 
-@Service
+@Component
 public class EmployeeServiceImpl implements EmployeeService {
-
-	@PersistenceContext
-    EntityManager em;
+	
+	@PersistenceUnit
+	private EntityManagerFactory emf;
 	
 	@Override
 	public void saveEmployee(Employee employee) {
-        em.getTransaction().begin();
-        em.persist(employee);
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+        if (!ObjectUtils.isEmpty(employee) && !em.contains(employee)) {
+        	   em.persist(employee);
+        	}
+        System.out.println("is active :::"+tx.isActive());
         em.getTransaction().commit();
 	}
 	
 	@Override
 	public Employee findEmployeeById(Long empId) {
+		EntityManager em = emf.createEntityManager();
 		Query q = em.createNativeQuery("SELECT EMPID,NAME,ADDRESS FROM Employee b WHERE EMPID = :empId", Employee.class);
 		q.setParameter("empId", empId);
 		Employee employee = (Employee) q.getSingleResult();
@@ -38,6 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee findEmployeeByName(String name) {
+		EntityManager em = emf.createEntityManager();
 		try {
 		Query query = em.createNamedQuery("Employee.findByName");
         query.setParameter("name", name);
@@ -56,6 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Employee> findAll() {
+		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("Employee.findAll");
         @SuppressWarnings("unchecked")
 		List<Employee> cars = query.getResultList();
