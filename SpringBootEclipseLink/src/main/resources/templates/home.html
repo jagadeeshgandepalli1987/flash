@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/styles.css"></link>
@@ -70,7 +70,24 @@
   <div class="top-left">Top Left</div>
   <div class="top-right">Top Right</div>
   <div class="bottom-right">Bottom Right</div>
-  <div class="centered">Centered</div>
+  <div class="centered">
+  <table border="1" >
+		<thead>
+			<tr>
+				<th>Employee No</th>
+				<th>Employee Name</th>
+				<th>Employee Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee: ${emplist}">
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.name}"></td>
+				<td th:text="${employee.address}"></td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
 </div>
 	</section>
 
